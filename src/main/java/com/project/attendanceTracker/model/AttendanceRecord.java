@@ -19,6 +19,23 @@ public class AttendanceRecord {
     private LocalDateTime punchInAt;
     private LocalDateTime punchOutAt;
     private String status;
+    private String uniqueConstraint;
+
+    public LocalDate getRecordDate() {
+        return recordDate;
+    }
+
+    public void setRecordDate(LocalDate recordDate) {
+        this.recordDate = recordDate;
+    }
+
+    public String getUniqueConstraint() {
+        return uniqueConstraint;
+    }
+
+    public void setUniqueConstraint(String uniqueConstraint) {
+        this.uniqueConstraint = uniqueConstraint;
+    }
 
     public int getId() {
         return id;
