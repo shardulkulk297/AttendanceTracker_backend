@@ -3,6 +3,7 @@ package com.project.attendanceTracker.model;
 import jakarta.persistence.*;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,6 +14,8 @@ public class AttendanceRecord {
     private int id;
     @ManyToOne
     private Employee employee;
+
+    private LocalDate recordDate;
     private LocalDateTime punchInAt;
     private LocalDateTime punchOutAt;
     private String status;

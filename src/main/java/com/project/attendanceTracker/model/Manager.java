@@ -14,6 +14,17 @@ public class Manager {
     private String phone;
     private String department;
 
+    @OneToOne
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     private String jobTitle;
 
     public String getJobTitle() {
