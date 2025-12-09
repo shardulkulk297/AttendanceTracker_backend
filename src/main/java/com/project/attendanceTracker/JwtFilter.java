@@ -1,4 +1,4 @@
-package com.ats.simplifly;
+package com.project.attendanceTracker;
 
 
 import com.project.attendanceTracker.service.CustomUserDetailsService;

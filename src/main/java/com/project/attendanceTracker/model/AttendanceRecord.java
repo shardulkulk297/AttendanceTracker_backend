@@ -3,8 +3,10 @@ package com.project.attendanceTracker.model;
 import jakarta.persistence.*;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "attendance_record")
@@ -20,6 +22,16 @@ public class AttendanceRecord {
     private LocalDateTime punchOutAt;
     private String status;
     private String uniqueConstraint;
+
+    private Duration workDuration;
+
+    public Duration getWorkDuration() {
+        return workDuration;
+    }
+
+    public void setWorkDuration(Duration workDuration) {
+        this.workDuration = workDuration;
+    }
 
     public LocalDate getRecordDate() {
         return recordDate;

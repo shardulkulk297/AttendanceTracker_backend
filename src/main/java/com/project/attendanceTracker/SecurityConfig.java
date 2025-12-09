@@ -18,12 +18,22 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     @Bean
-    SecurityFilterChain filterChain(HttpSecurity http, com.ats.simplifly.JwtFilter jwtFilter) throws Exception{
+    SecurityFilterChain filterChain(HttpSecurity http, com.project.attendanceTracker.JwtFilter jwtFilter) throws Exception{
         http
                 .csrf((csrf)->csrf.disable())
                 .authorizeHttpRequests(authorize->authorize
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/api/user/signup").permitAll()
+                        .requestMatchers("/api/user/getToken").authenticated()
+                        .requestMatchers("/api/user/getLoggedInUserDetails").authenticated()
+                        .requestMatchers("/api/manager/add").permitAll()
+                        .requestMatchers("/api/employee/add").permitAll()
+                        .requestMatchers("/api/attendance/check-in").hasAuthority("EMPLOYEE")
+                        .requestMatchers("/api/attendance/check-out").hasAuthority("EMPLOYEE")
+                        .requestMatchers("/api/leave/apply").hasAuthority("EMPLOYEE")
+                        .requestMatchers("/api/leave/withdraw").hasAuthority("EMPLOYEE")
+                        .requestMatchers("/api/manager/leave/approve").hasAuthority("MANAGER")
+                        .requestMatchers("/api/manager/leave/decline").hasAuthority("MANAGER")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)

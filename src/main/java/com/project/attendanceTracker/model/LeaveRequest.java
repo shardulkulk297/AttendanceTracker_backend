@@ -23,7 +23,15 @@ public class LeaveRequest {
     private LocalDateTime requestedAt;
     private LocalDateTime decidedAt;
     private LocalDateTime withdrawnAt;
+    private String uniqueIdentifier;
 
+    public String getUniqueIdentifier() {
+        return uniqueIdentifier;
+    }
+
+    public void setUniqueIdentifier(String uniqueIdentifier) {
+        this.uniqueIdentifier = uniqueIdentifier;
+    }
 
     public int getId() {
         return id;

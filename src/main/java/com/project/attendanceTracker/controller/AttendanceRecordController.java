@@ -18,7 +18,7 @@ public class AttendanceRecordController {
     private AttendanceRecordService attendanceRecordService;
 
     @PostMapping("/api/attendance/check-in")
-    public ResponseEntity<?> checkIn(@RequestBody AttendanceRecord attendanceRecord, Principal principal){
+    public ResponseEntity<?> checkIn(AttendanceRecord attendanceRecord, Principal principal){
         return ResponseEntity.status(HttpStatus.CREATED).body(attendanceRecordService.checkIn(attendanceRecord, principal.getName()));
     }
 

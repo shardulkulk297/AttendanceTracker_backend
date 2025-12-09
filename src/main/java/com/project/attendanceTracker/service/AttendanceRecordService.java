@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.print.AttributeException;
 import java.security.Principal;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -39,6 +40,7 @@ public class AttendanceRecordService {
         attendanceRecord.setEmployee(employee);
         attendanceRecord.setStatus("PRESENT");
         attendanceRecord.setPunchInAt(LocalDateTime.now());
+        attendanceRecord.setRecordDate(LocalDate.now());
 
         return attendanceRecordRepository.save(attendanceRecord);
     }
@@ -50,6 +52,9 @@ public class AttendanceRecordService {
 
         attendanceRecord.setPunchOutAt(LocalDateTime.now());
         attendanceRecord.setRecordDate(LocalDate.now());
+
+        Duration workDuration = Duration.between(attendanceRecord.getPunchInAt(), attendanceRecord.getPunchOutAt());
+        attendanceRecord.setWorkDuration(workDuration);
 
         return attendanceRecordRepository.save(attendanceRecord);
     }
