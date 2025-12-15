@@ -12,6 +12,7 @@ import java.security.Principal;
 import java.time.LocalDateTime;
 
 @RestController
+@CrossOrigin("http://localhost:5173")
 public class AttendanceRecordController {
 
     @Autowired
